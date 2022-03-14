@@ -7,13 +7,15 @@
       <br />
       <button v-on:click="submitFile()">Submit</button>
     </div>
-    {{ filecontent }}
+    <show-data :json="filecontent" />
   </div>
 </template>
  
- 
-  <script>
+<script>
+import csvJSON from "@/functions/csvJSON";
+import showData from "./showData.vue";
 export default {
+  components: { showData },
   name: "pageMain",
   props: {
     msg: String,
@@ -34,7 +36,8 @@ export default {
       reader.readAsText(this.file);
     },
     submitFile() {
-      this.filecontent = this.content;
+      this.filecontent = csvJSON(this.content);
+      console.log(this.filecontent);
     },
   },
 };
