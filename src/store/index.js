@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 export default new Vuex.Store({
   state: { // = Data
     patients: [],
-    data: []
+    currentPatient: [],
   },
   getters: {
     patientCount() { // = computed
@@ -18,7 +18,9 @@ export default new Vuex.Store({
   mutations: {
     setPatients(state, patients) {
       state.patients = patients
-
+    },
+    setCurrentPatient(state, data) {
+      state.currentPatient = data
     }
   }
 })

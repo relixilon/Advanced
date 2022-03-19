@@ -1,22 +1,31 @@
    <template>
   <div class="container">
-    <div>
-      <h2>Load a file</h2>
-      <hr />
-      <label>File <input type="file" ref="doc" @change="readFile()" /> </label>
+    <div class="fileInput">
+      <button class="submitFile">
+        <label>
+          Upload File
+          <input
+            type="file"
+            class="hide"
+            ref="doc"
+            accept=".csv"
+            @change="readFile()"
+          />
+        </label>
+      </button>
       <br />
-      <button v-on:click="submitFile()">Submit</button>
+      <button class="submitFile" type="submit" v-on:click="submitFile()">
+        Submit
+      </button>
     </div>
-    <show-data :json="Hello" />
   </div>
 </template>
  
 <script>
 import store from "@/store/index.js";
 import csvJSON from "@/functions/csvJSON";
-import showData from "./showData.vue";
 export default {
-  components: { showData },
+  components: {},
   name: "FileSubmit",
   props: {
     msg: String,
@@ -44,3 +53,24 @@ export default {
   },
 };
 </script>
+<style scoped>
+.container {
+  display: flex;
+  width: 9vw;
+  height: 100%;
+}
+.fileInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.submitFile {
+  height: 50%;
+  background-color: lightblue;
+}
+.hide {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+</style>

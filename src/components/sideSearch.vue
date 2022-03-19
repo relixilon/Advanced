@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="searchContainer">
     <input type="text" placeholder="Search" v-model="search" />
     <ul>
       <li v-for="patient in patients" :key="patient.encounterId">
-        <button>
+        <button v-on:click="selectPatient(patient)">
           {{ patient.encounterId }}
         </button>
       </li>
@@ -27,9 +27,17 @@ export default {
       );
     },
   },
+  methods: {
+    selectPatient(patient) {
+      store.commit("setCurrentPatient", patient);
+    },
+  },
 };
 </script>
 <style scoped>
+.searchContainer {
+  margin: 0 1vw 0 1vw;
+}
 ul {
   display: flex;
   flex-direction: column;

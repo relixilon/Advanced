@@ -1,5 +1,5 @@
 <template>
-  <home msg="Welcome to Your Vue.js App" />
+  <home />
 </template>
 
 <script>
@@ -14,4 +14,7 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0;
+}
 </style>
