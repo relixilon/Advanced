@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="headers.length > 2">
     <card class="card" v-for="header in headers" :key="header">
       <h2>{{ header }}</h2>
       <p>{{ patientData[header] }}</p>

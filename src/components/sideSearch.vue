@@ -3,7 +3,12 @@
     <input type="text" placeholder="Search" v-model="search" />
     <ul>
       <li v-for="patient in patients" :key="patient.encounterId">
-        <button v-on:click="selectPatient(patient)">
+        <button
+          v-bind:class="{
+            active: patient.encounterId === currentPatient.encounterId,
+          }"
+          v-on:click="selectPatient(patient)"
+        >
           {{ patient.encounterId }}
         </button>
       </li>
@@ -25,6 +30,9 @@ export default {
       return store.state.patients.filter(
         (patient) => patient.encounterId.indexOf(this.search) !== -1
       );
+    },
+    currentPatient() {
+      return store.state.currentPatient;
     },
   },
   methods: {
@@ -77,6 +85,9 @@ button {
   border: none;
   background-color: white;
   font-size: 22px;
+}
+.active {
+  background-color: lightblue;
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
 </style>

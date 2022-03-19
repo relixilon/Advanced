@@ -21,6 +21,7 @@ export default new Vuex.Store({
     },
     setCurrentPatient(state, data) {
       state.currentPatient = data
-    }
+    },
+
   }
 })
