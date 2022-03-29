@@ -1,7 +1,7 @@
 <template>
-<div class="chart-info">
-  <h1>Patient Report #{{ encounterId }}</h1>
-</div>
+  <div class="chart-info">
+    <h1>Patient Report #{{ encounterId }}</h1>
+  </div>
 </template>
 
 <script>
@@ -15,4 +15,5 @@ export default {
       encounterId: data.encounterId,
     }
   }
-}</script>
+}
+</script>

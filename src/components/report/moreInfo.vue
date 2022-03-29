@@ -7,10 +7,3 @@
   name: 'MoreInfo',
   }
 </script>
-
-<style scoped>
-p {
-  font-size: 13px;
-  padding-bottom: 5px;
-}
-</style>

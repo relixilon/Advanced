@@ -34,6 +34,9 @@ export default {
         indexAxis: 'y',
         responsiveness: true,
         maintainAspectRatio: false,
+        animation: {
+          duration:0
+        },
         plugins: {
           title: {
             display: true,
@@ -65,10 +68,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.feed-graph-container {
-  width: 600px;
-  height: 300px;
-}
-</style>

@@ -29,15 +29,13 @@ export default {
 </script>
 
 <style scoped>
-table {
-  width: 600px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 1px solid;
-}
-
-td, th {
+table, td, th {
   border: 1px solid;
   text-align: center;
+}
+
+table {
+  width: 40vw;
+  height: 5vh;
 }
 </style>

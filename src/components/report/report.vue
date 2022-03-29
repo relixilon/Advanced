@@ -28,23 +28,23 @@
     <div class="tidal-vol-container">
       <h2>Lung Capacity</h2>
       <p>A healthy adult male has a tidal volume of around 500, females around 400.</p>
-      <tidal-vol-table/>
-      <tidal-vol-graph/>
+      <tidal-vol-table class="table"/>
+      <tidal-vol-graph class="graph"/>
     </div>
 
     <div class="feed-vol-container">
       <h2>Feeding Volume</h2>
       <p>Tracking of tube feeding administered to patient.</p>
-      <feed-vol-table/>
-      <feed-vol-graph/>
+      <feed-vol-table class="table"/>
+      <feed-vol-graph class="graph"/>
     </div>
     <div class="other-info-container">
         <h2>Other Information</h2>
     </div>
     <br/>
-    <div class="footer-container">
+    <footer>
       <more-info/>
-    </div>
+    </footer>
   </div>
 </template>
 
@@ -86,18 +86,48 @@ export default {
 
 <style scoped>
 .report-container {
-  margin-left: 10%;
-  margin-right: 10%;
-  padding-left: 20px;
-  padding-right: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10vw;
+  margin-right: 10vw;
   border-left: 2px solid;
   border-right: 2px solid;
   background-color: #d0d0d0;
 }
 
-.button-container {
-  padding-top: 20px;
-  padding-bottom: 20px;
+.button-container, .chart-info-container, .referred-container, .bmi-container,
+.tidal-vol-container, .feed-vol-container, .other-info-container, footer {
+  flex-direction: row;
+  width: 100vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.chart-info-container {
+  margin-top: 2vh;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+}
+
+.referred-container, .bmi-value {
+  font-size: 20px;
+}
+
+.graph {
+  width: 40vw;
+  height: 30vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+button {
+  margin-top: 1vh;
+  margin-right: 15px;
+  font-size: 15px;
+  text-align: center;
+  padding: 5px;
+  background-color: lightblue;
+  border-color: black;
 }
 
 a {
@@ -105,35 +135,12 @@ a {
   color: black;
 }
 
-button {
-  margin-right: 15px;
-  font-size: 15px;
-  text-align: center;
-  background-color: lightblue;
-  padding: 5px;
-  border-color: black;
+p, h2 {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
-h2 {
-  margin: 0;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-p {
-  margin: 0;
-}
-
-.bmi-value {
-  font-size: 20px;
-}
-
-.chart-info-container {
-  border-top: 2px solid;
-  border-bottom: 2px solid;
-}
-
-.referred-container {
-  font-size: 20px;
+footer {
+  font-size: 13px;
 }
 </style>

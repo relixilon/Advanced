@@ -1,29 +1,29 @@
 <template>
   <div v-if="tidalData == 0">
-    No data to report.
+    <p>No data to report.</p>
   </div>
   <div v-else>
-  <table>
-    <tr>
-      <th>Tidal Vol</th>
-      <th>Tidal Vol Actual</th>
-      <th>Tidal Vol KG</th>
-      <th>Tidal Vol Spon</th>
-      <th>End Tidal CO2</th>
-    </tr>
-    <tr>
-      <td v-if="tidalVol == 0">No data</td>
-      <td v-else>{{ tidalVol }}</td>
-      <td v-if="tidalVolActual == 0">No data</td>
-      <td v-else>{{ tidalVolActual }}</td>
-      <td v-if="tidalVolKg == 0">No data</td>
-      <td v-else>{{ tidalVolKg }}</td>
-      <td v-if="tidalVolSpon == 0">No data</td>
-      <td v-else>{{ tidalVolSpon }}</td>
-      <td v-if="tidalCO2 == 0">No data</td>
-      <td v-else>{{ tidalCO2 }}</td>
-    </tr>
-  </table>
+    <table>
+      <tr>
+        <th>Tidal Vol</th>
+        <th>Tidal Vol Actual</th>
+        <th>Tidal Vol KG</th>
+        <th>Tidal Vol Spon</th>
+        <th>End Tidal CO2</th>
+      </tr>
+      <tr>
+        <td v-if="tidalVol == 0">No data</td>
+        <td v-else>{{ tidalVol }}</td>
+        <td v-if="tidalVolActual == 0">No data</td>
+        <td v-else>{{ tidalVolActual }}</td>
+        <td v-if="tidalVolKg == 0">No data</td>
+        <td v-else>{{ tidalVolKg }}</td>
+        <td v-if="tidalVolSpon == 0">No data</td>
+        <td v-else>{{ tidalVolSpon }}</td>
+        <td v-if="tidalCO2 == 0">No data</td>
+        <td v-else>{{ tidalCO2 }}</td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -56,14 +56,13 @@ export default {
 </script>
 
 <style scoped>
-table {
-  width: 800px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 table, th, td {
   border: 1px solid;
   text-align: center;
+}
+
+table {
+  width: 40vw;
+  height: 5vh;
 }
 </style>

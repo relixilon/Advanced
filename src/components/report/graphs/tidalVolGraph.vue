@@ -33,6 +33,9 @@ export default {
       options: {
         responsiveness: true,
         maintainAspectRatio: false,
+        animation: {
+          duration:0
+        },
         plugins: {
           title: {
             display: true,
@@ -63,10 +66,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.tidal-graph-container {
-  width: 600px;
-  height: 300px;
-}
-</style>
