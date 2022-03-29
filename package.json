@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@flatfile/vuejs": "^3.0.0",
+    "chart.js": "^3.7.1",
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
     "vue-json-pretty": "^1.8.2",
