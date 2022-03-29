@@ -5,6 +5,8 @@
       <div class="">Logo</div>
     </div>
     <h2 class="name">Name Maybe</h2>
+    <router-link to="/report">Generate report</router-link>
+    <router-view/>
     <div class="user">
       <button v-if="!user" v-on:click="f">Login</button>
       <p v-else>{{ user }}</p>

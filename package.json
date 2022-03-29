@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
     "vue-json-pretty": "^1.8.2",
+    "vue-router": "^4.0.14",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
