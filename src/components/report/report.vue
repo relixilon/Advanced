@@ -4,7 +4,6 @@
     <div class="button-container">
       <button><router-link to="/">Home</router-link></button>
       <button><a href="">Download as PDF</a></button>
-      <router-view/>
     </div>
 
     <div class="chart-info-container">
@@ -13,38 +12,46 @@
 
     <br/>
 
-    <div class="referred-container">
-      <p v-if="referral == 1">PATIENT HAS BEEN FLAGGED FOR REFERRAL</p>
-      <p v-if="referral == 0">PATIENT HAS NOT BEEN FLAGGED FOR REFERRAL</p>
+    <div v-if="encounterId == undefined" class="no-patient-container">
+      <p>No patient selected, could not generate report.</p>
     </div>
 
-    <div class="bmi-container">
-      <h2>Body Mass Index</h2>
-      <p>BMI's over 30 and under 18 indicate patient is in dangerous range.</p>
-      <p v-if="bmi == 0" class="bmi-value">No BMI data for patient</p>
-      <p v-else class="bmi-value">Patient BMI: {{ bmi }}</p>
-    </div>
+    <div v-else>
+      <div class="referred-container">
+        <p v-if="referral == 1">PATIENT HAS BEEN FLAGGED FOR REFERRAL</p>
+        <p v-else>PATIENT HAS NOT BEEN FLAGGED FOR REFERRAL</p>
+      </div>
 
-    <div class="tidal-vol-container">
-      <h2>Lung Capacity</h2>
-      <p>A healthy adult male has a tidal volume of around 500, females around 400.</p>
-      <tidal-vol-table class="table"/>
-      <tidal-vol-graph class="graph"/>
-    </div>
+      <div class="bmi-container">
+        <h2>Body Mass Index</h2>
+        <p>BMI's over 30 and under 18 indicate patient is in dangerous range.</p>
+        <p v-if="bmi == 0" class="bmi-value">No BMI data for patient</p>
+        <p v-else class="bmi-value">Patient BMI: {{ bmi }}</p>
+      </div>
 
-    <div class="feed-vol-container">
-      <h2>Feeding Volume</h2>
-      <p>Tracking of tube feeding administered to patient.</p>
-      <feed-vol-table class="table"/>
-      <feed-vol-graph class="graph"/>
+      <div class="tidal-vol-container">
+        <h2>Lung Capacity</h2>
+        <p>A healthy adult male has a tidal volume of around 500, females around 400.</p>
+        <tidal-vol-table/>
+        <tidal-vol-graph/>
+      </div>
+
+      <div class="feed-vol-container">
+        <h2>Feeding Volume</h2>
+        <p>Tracking of tube feeding administered to patient.</p>
+        <feed-vol-table/>
+        <feed-vol-graph/>
+      </div>
+
+      <div class="other-info-container">
+          <h2>Other Information</h2>
+      </div>
+
+      <br/>
+      <footer>
+        <more-info/>
+      </footer>
     </div>
-    <div class="other-info-container">
-        <h2>Other Information</h2>
-    </div>
-    <br/>
-    <footer>
-      <more-info/>
-    </footer>
   </div>
 </template>
 
@@ -71,14 +78,15 @@ export default {
                 },
   data() {
     const data = JSON.parse(JSON.stringify(store.state.currentPatient));
-
+    let encounterId = data.encounterId
     // Get referral (1=referred, 0=no referral)
     let referral = Object.values(data)[17]
     // Get bmi and generate only first 2 decimals
     let bmi = Math.round(data.bmi*100)/100;
     return {
       bmi: bmi,
-      referral: referral
+      referral: referral,
+      encounterId: encounterId
     }
   }
 }
@@ -96,7 +104,7 @@ export default {
 }
 
 .button-container, .chart-info-container, .referred-container, .bmi-container,
-.tidal-vol-container, .feed-vol-container, .other-info-container, footer {
+.tidal-vol-container, .feed-vol-container, .other-info-container, .no-patient-container, footer {
   flex-direction: row;
   width: 100vw;
   margin-left: 1vw;
@@ -111,13 +119,6 @@ export default {
 
 .referred-container, .bmi-value {
   font-size: 20px;
-}
-
-.graph {
-  width: 40vw;
-  height: 30vh;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
 }
 
 button {

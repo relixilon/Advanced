@@ -65,4 +65,8 @@ table {
   width: 40vw;
   height: 5vh;
 }
+
+p {
+  font-size: 20px;
+}
 </style>
