@@ -5,16 +5,21 @@
       <div class="">Logo</div>
     </div>
     <h2 class="name">Name Maybe</h2>
-    <router-link to="/report">Generate report</router-link>
-    <router-view/>
+    <button v-on:click="switchContent('patient-info')">Overview</button>
+    <button v-on:click="switchContent('graph-slides')">Charts</button>
+    <button>
+      <router-link to="/report">Generate report</router-link>
+    </button>
+
     <div class="user">
       <button v-if="!user" v-on:click="f">Login</button>
       <p v-else>{{ user }}</p>
     </div>
   </div>
+
   <div class="content">
     <side-search />
-    <patient-info />
+    <component :is="currentContent"></component>
   </div>
 </template>
 
@@ -22,13 +27,22 @@
 import FileSubmit from "./fileSubmit.vue";
 import SideSearch from "./sideSearch.vue";
 import PatientInfo from "./patientInfo.vue";
+import GraphSlides from "./graphSlides.vue";
+
 export default {
   name: "home",
-  components: { FileSubmit, SideSearch, PatientInfo },
+  components: { FileSubmit, SideSearch, PatientInfo, GraphSlides },
   data() {
     return {
       user: "",
+      currentContent: "graph-slides"
     };
+  },
+  methods: {
+    switchContent: function(component) {
+      console.log(component)
+      this.currentContent = component;
+    }
   },
 };
 </script>
