@@ -27,7 +27,7 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  height: 90vh;
+  height: 85vh;
   flex-wrap: wrap;
 }
 </style>

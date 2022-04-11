@@ -5,16 +5,15 @@
       <div class="">Logo</div>
     </div>
     <h2 class="name">Name Maybe</h2>
-    <button v-on:click="switchContent('patient-info')">Overview</button>
-    <button v-on:click="switchContent('graph-slides')">Charts</button>
-    <button>
-      <router-link to="/report">Generate report</router-link>
-    </button>
 
     <div class="user">
       <button v-if="!user" v-on:click="f">Login</button>
       <p v-else>{{ user }}</p>
     </div>
+  </div>
+  
+  <div class="nav">
+    <bar v-on:change-comp="switchContent"/>
   </div>
 
   <div class="content">
@@ -28,10 +27,11 @@ import FileSubmit from "./fileSubmit.vue";
 import SideSearch from "./sideSearch.vue";
 import PatientInfo from "./patientInfo.vue";
 import GraphSlides from "./graphSlides.vue";
+import Bar from "./bar.vue";
 
 export default {
   name: "home",
-  components: { FileSubmit, SideSearch, PatientInfo, GraphSlides },
+  components: { FileSubmit, SideSearch, Bar, PatientInfo, GraphSlides },
   data() {
     return {
       user: "",
@@ -39,8 +39,7 @@ export default {
     };
   },
   methods: {
-    switchContent: function(component) {
-      console.log(component)
+    switchContent(component) {
       this.currentContent = component;
     }
   },

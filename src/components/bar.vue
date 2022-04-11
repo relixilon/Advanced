@@ -1,10 +1,13 @@
 <template>
   <div class="bar">
     <ul>
-      <li>Logo</li>
-      <li>Home</li>
-      <li>Charts</li>
-      <li>Other</li>
+      <li><button v-on:click="changeComp('patient-info')">Overview</button></li>
+      <li><button v-on:click="changeComp('graph-slides')">Charts</button></li>
+      <li>
+        <button>
+          <router-link to="/report">Generate report</router-link>
+        </button>
+      </li>
     </ul>
     <ul class="login">
       <li>Login</li>
@@ -16,6 +19,11 @@
 <script>
 export default {
   name: "bar",
+  methods: {
+    changeComp (component) {
+      this.$emit("changeComp", component)
+    }
+  }
 };
 </script>
 
@@ -26,7 +34,7 @@ export default {
   width: 100vw;
   background-color: black;
   color: white;
-  height: 7vh;
+  height: 4vh;
   align-items: center;
   justify-content: space-between;
 }
@@ -47,4 +55,5 @@ li:hover {
 .login {
   order: 1;
 }
+
 </style>
