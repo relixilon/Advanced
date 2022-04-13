@@ -6,6 +6,7 @@
 <script>
 export default {
   name: "ChartNav",
+  emits: ["changeChart"], 
   methods: {
     changeChart (chart) {
       this.$emit("changeChart", chart)

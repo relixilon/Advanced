@@ -1,7 +1,8 @@
 <template>
-  <p>Graphs go here</p>
   <chart-nav v-on:change-chart="changeChart"/>
-  <component :is="currentChart"></component>
+  <div class="chart-container">
+    <component :is="currentChart"></component>
+  </div>
 </template>
 
 <script>
@@ -9,12 +10,19 @@ import ChartNav from './chartNav.vue'
 import TidalVolGraph from './tidalVolGraph.vue'
 import FeedVolGraph from './feedVolGraph.vue'
 
+import store from '@/store/index.js'
+
 export default {
   name: "Charts",
   components: { ChartNav, TidalVolGraph, FeedVolGraph },
+  computed: {
+    patient() {
+      return store.state.currentPatient
+    }
+  },
   data() {
     return {
-      currentChart: "tidal-vol-graph"
+      currentChart: ""
     }
   },
   methods: {
@@ -24,3 +32,7 @@ export default {
   },  
 }
 </script>
+
+<style scoped>
+
+</style>

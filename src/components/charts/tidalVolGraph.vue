@@ -1,10 +1,6 @@
-
 <template>
-  <div v-if="tidalTotalData == 0">
-    <p>Not enough data to generate graph.</p>
-  </div>
-  <div v-else class="tidal-graph-container">
-    <canvas id="TidalVolGraph" height="400"></canvas>
+  <div class="tidal-graph-container">
+    <canvas id="TidalVolGraph"></canvas>
   </div>
 </template>
 
@@ -14,25 +10,29 @@ import store from '@/store/index.js'
 
 export default {
   name: 'TidalVolGraph',
-  data() {
-    const data = JSON.parse(JSON.stringify(store.state.currentPatient));
-    let tidalTotalData = data.tidal_vol + data.tidal_vol_actual
-    return {
-      tidalTotalData
+  watch: {
+    tidalData: function() {
+      this.tidalGraph.destroy()
+      this.renderTidalChart()
     }
   },
-  mounted() {
-    const data = JSON.parse(JSON.stringify(store.state.currentPatient));
-    let tidalVolData = [data.tidal_vol, data.tidal_vol_actual];
-    if (document.getElementById('TidalVolGraph') != null) {
-      const ctx = document.getElementById('TidalVolGraph').getContext("2d");
-      new Chart(ctx, {
+  computed: {
+    tidalData() {
+    let data = JSON.parse(JSON.stringify(store.state.currentPatient));
+    let tidalData = [data.tidal_vol, data.tidal_vol_actual]
+    return tidalData
+    }
+  },
+  methods: {
+    renderTidalChart() {
+      let ctx = document.getElementById('TidalVolGraph').getContext("2d");
+      this.tidalGraph = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: ["Tidal Vol", "Tidal Vol Actual"],
           datasets: [
             {
-              data: tidalVolData,
+              data: this.tidalData,
               backgroundColor: "rgba(21, 100, 255, 0.5)",
               borderColor: "#333333",
               borderWidth: 3
@@ -62,7 +62,8 @@ export default {
                 beginAtZero: true,
                 padding: 25,
                 color: "black"
-                }
+                  },
+                max: 500,
               },
             xAxes: {
               ticks: {
@@ -73,14 +74,17 @@ export default {
         }
       })
     }
-    },
+  },
+  mounted() {
+    this.renderTidalChart();
   }
+}
 </script>
 
 <style scoped>
 .tidal-graph-container {
-  width: 40vw;
-  height: 30vh;
+  width: 60vw;
+  height: 60vh;
   margin-top: 1vh;
   margin-bottom: 1vh;
 }

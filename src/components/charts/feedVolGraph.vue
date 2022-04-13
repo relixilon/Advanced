@@ -1,9 +1,6 @@
 <template>
-  <div v-if="feedTotalData == 0">
-    <p>Not enough data to generate graph.</p>
-  </div>
-  <div v-else class="feed-graph-container">
-    <canvas id="FeedVolGraph" height="400"></canvas>
+  <div class="feed-graph-container">
+    <canvas id="FeedVolGraph"></canvas>
   </div>
 </template>
 
@@ -13,25 +10,29 @@ import store from '@/store/index.js'
 
 export default {
   name: 'FeedVolGraph',
-  data() {
-    const data = JSON.parse(JSON.stringify(store.state.currentPatient));
-    let feedTotalData = data.feed_vol + data.feed_vol_adm
-    return {
-      feedTotalData
+  watch: {
+    feedData: function() {
+      this.feedGraph.destroy()
+      this.renderFeedChart()
     }
   },
-  mounted() {
-    const data = JSON.parse(JSON.stringify(store.state.currentPatient));
-    let feedVolData = [data.feed_vol, data.feed_vol_adm]
-    if (document.getElementById('FeedVolGraph') != null) {
-      const ctx = document.getElementById('FeedVolGraph').getContext("2d");
-      new Chart(ctx, {
+  computed: {
+    feedData() {
+    let data = JSON.parse(JSON.stringify(store.state.currentPatient));
+    let feedData = [data.feed_vol, data.feed_vol_adm]
+    return feedData
+    }
+  },
+  methods: {
+    renderFeedChart() {
+      let ctx = document.getElementById('FeedVolGraph').getContext("2d");
+      this.feedGraph = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ["Feed Vol", "Feed Vol Adm"],
+          labels: ["Feed Vol", "Feed Vol Administered"],
           datasets: [
             {
-              data: feedVolData,
+              data: this.feedData,
               backgroundColor: "rgba(255, 100, 21, 0.5)",
               borderColor: "#333333",
               borderWidth: 3
@@ -39,7 +40,7 @@ export default {
           ]
         },
         options: {
-          indexAxis: 'y',
+          indexAxis: 'y', 
           responsiveness: true,
           maintainAspectRatio: false,
           animation: {
@@ -62,10 +63,9 @@ export default {
                 beginAtZero: true,
                 padding: 25,
                 color: "black"
-                }
+                  },
               },
-            xAxes: 
-            {
+            xAxes: {
               ticks: {
                 color: "black"
               }
@@ -74,19 +74,18 @@ export default {
         }
       })
     }
-    },
+  },
+  mounted() {
+    this.renderFeedChart();
   }
+}
 </script>
 
 <style scoped>
 .feed-graph-container {
-  width: 40vw;
-  height: 30vh;
+  width: 60vw;
+  height: 60vh;
   margin-top: 1vh;
   margin-bottom: 1vh;
-}
-
-p {
-  font-size: 20px;
 }
 </style>
