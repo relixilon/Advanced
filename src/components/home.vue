@@ -26,16 +26,16 @@
 import FileSubmit from "./fileSubmit.vue";
 import SideSearch from "./sideSearch.vue";
 import PatientInfo from "./patientInfo.vue";
-import GraphSlides from "./graphSlides.vue";
+import Charts from "./charts/charts.vue";
 import Bar from "./bar.vue";
 
 export default {
   name: "home",
-  components: { FileSubmit, SideSearch, Bar, PatientInfo, GraphSlides },
+  components: { FileSubmit, SideSearch, Bar, PatientInfo, Charts },
   data() {
     return {
       user: "",
-      currentContent: "graph-slides"
+      currentContent: "patient-info"
     };
   },
   methods: {

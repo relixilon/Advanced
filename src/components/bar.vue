@@ -2,7 +2,7 @@
   <div class="bar">
     <ul>
       <li><button v-on:click="changeComp('patient-info')">Overview</button></li>
-      <li><button v-on:click="changeComp('graph-slides')">Charts</button></li>
+      <li><button v-on:click="changeComp('charts')">Charts</button></li>
       <li>
         <button>
           <router-link to="/report">Generate report</router-link>
