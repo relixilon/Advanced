@@ -9,9 +9,11 @@
         </button>
       </li>
     </ul>
-    <ul class="login">
-      <li>Login</li>
-      <li>Register</li>
+    <ul class="login"> 
+
+      <li><button><router-link to="/login-page">Log-out</router-link></button></li>
+      
+    
     </ul>
   </div>
 </template>
