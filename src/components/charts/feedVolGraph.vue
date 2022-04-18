@@ -1,7 +1,5 @@
 <template>
-  <div class="feed-graph-container">
-    <canvas id="FeedVolGraph"></canvas>
-  </div>
+  <canvas id="FeedVolGraph"></canvas>
 </template>
 
 <script>
@@ -81,11 +79,3 @@ export default {
 }
 </script>
 
-<style scoped>
-.feed-graph-container {
-  width: 60vw;
-  height: 60vh;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-}
-</style>
