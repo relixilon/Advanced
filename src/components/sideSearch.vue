@@ -43,9 +43,12 @@ export default {
 };
 </script>
 <style scoped>
+@import '../assets/variables.css';
+
 .searchContainer {
   margin: 0 1vw 0 1vw;
 }
+
 ul {
   display: flex;
   flex-direction: column;
@@ -53,41 +56,46 @@ ul {
   height: 70vh;
   overflow: scroll;
   list-style: none;
-  border: 1px;
-  border-style: solid;
+  border: 1px solid;
   width: 9vw;
-  border-width: 3px;
   padding: 0;
+  background-color: var(--primary-color);
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
 ul::-webkit-scrollbar {
   display: none;
 }
+
 input {
   width: 9vw;
   font-size: 20px;
-  margin: 1vh 0 0 0;
+  margin: 3vh 0 0 0;
 }
 
 li {
-  border-bottom: 1px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  border-bottom: 1px solid;
   text-align: center;
   width: 100%;
 }
+
+button {
+  background-color: var(--primary-color);
+}
+
 button:hover {
   background: rgb(233, 228, 228);
 }
+
 button {
   width: 100%;
   border: none;
-  background-color: white;
+  background-color: var(--primary-color);
   font-size: 22px;
 }
+
 .active {
-  background-color: lightblue;
+  background-color: var(--secondary-color);
 }
-/* Hide scrollbar for Chrome, Safari and Opera */
 </style>
