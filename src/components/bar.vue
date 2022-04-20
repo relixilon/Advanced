@@ -5,13 +5,11 @@
       <li><button v-on:click="changeComp('charts')">Charts</button></li>
       <li>
         <button>
-          <router-link to="/report">Generate report</router-link>
+          <router-link to="/report"
+           style="text-decoration: none;
+           color: inherit;">Report</router-link>
         </button>
       </li>
-    </ul>
-    <ul class="login">
-      <li>Login</li>
-      <li>Register</li>
     </ul>
   </div>
 </template>
@@ -27,14 +25,14 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@import '../assets/variables.css';
+
 .bar {
   display: flex;
-  width: 100vw;
-  background-color: black;
-  color: white;
-  height: 4vh;
+  width: 88vw;
+  background-color: var(--primary-color);
+  height: 5vh;
   align-items: center;
   justify-content: space-between;
 }
@@ -44,16 +42,13 @@ ul {
   flex-direction: row;
   list-style: none;
 }
-li {
-  margin: 0 2vw 0 0;
-}
 
-li:hover {
-  font-size: 20px;
+button {
+  width: 10vw;
+  text-align: center;
+  padding: 3px;
+  margin-left: 1vw;
+  background-color: lightblue;
+  border-color: black;
 }
-
-.login {
-  order: 1;
-}
-
 </style>

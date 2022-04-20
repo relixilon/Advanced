@@ -26,20 +26,28 @@ export default {
 </script>
 
 <style scoped>
-button {
-  height: 5vh;
-  width: 10vw;
-}
-
 .nav-container {
   display: flex;
   flex-direction: column;
   width: 15vw;
+  height: 100vh;
 }
 
 .average-charts {
-  border-top: 2px solid;
   margin-top: 20vh;
 }
 
+h2 {
+  margin-left: 1vw;
+}
+
+button {
+  width: 10vw;
+  text-align: center;
+  padding: 3px;
+  margin-left: 1vw;
+  margin-bottom: 1vh;
+  background-color: lightblue;
+  border-color: black;
+}
 </style>

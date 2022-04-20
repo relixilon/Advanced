@@ -1,7 +1,11 @@
 <template>
-  <chart-nav v-on:change-chart="changeChart" class="nav-container"/>
-  <div class="chart-container">
-    <component :is="currentChart"></component>
+  <div class="charts-container">
+    <div class="nav-container">
+      <chart-nav v-on:change-chart="changeChart" class="nav-container"/>
+    </div>
+    <div class="chart-container">
+      <component :is="currentChart"></component>
+    </div>
   </div>
 </template>
 
@@ -35,11 +39,20 @@ export default {
 </script>
 
 <style scoped>
+.charts-container {
+  display: flex;
+}
+
+.nav-container {
+  display: flex;
+  width: 15vw;
+  height: 100vh;
+}
+
 .chart-container {
   display: flex;
-  width: 70vw;
-  height: 80vh;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
+  width: 71vw;
+  height: 81vh;
+  margin: 1vw;
 }
 </style>
