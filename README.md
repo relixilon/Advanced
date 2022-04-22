@@ -8,6 +8,8 @@ npm install
 ### Compiles and hot-reloads for development
 ```
 npm run serve
+
+python backend.py
 ```
 
 ### Compiles and minifies for production
