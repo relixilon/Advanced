@@ -1,7 +1,5 @@
 <template>
-  <div class="tidal-graph-container">
-    <canvas id="TidalVolGraph"></canvas>
-  </div>
+  <canvas id="TidalVolGraph"></canvas>
 </template>
 
 <script>
@@ -80,16 +78,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.tidal-graph-container {
-  width: 60vw;
-  height: 60vh;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-}
-
-p {
-  font-size: 20px;
-}
-</style>

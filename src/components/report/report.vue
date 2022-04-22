@@ -3,7 +3,6 @@
 
     <div class="button-container">
       <button><router-link to="/">Home</router-link></button>
-      <button><a href="">Download as PDF</a></button>
     </div>
 
     <div class="chart-info-container">
@@ -25,22 +24,32 @@
       <div class="bmi-container">
         <h2>Body Mass Index</h2>
         <p>BMI's over 30 and under 18 indicate patient is in dangerous range.</p>
-        <p v-if="bmi == 0" class="bmi-value">No BMI data for patient</p>
-        <p v-else class="bmi-value">Patient BMI: {{ bmi }}</p>
+        <p v-if="bmi == 0" class="patient-data">No BMI data for patient</p>
+        <p v-else class="patient-data">Patient BMI: {{ bmi }}</p>
       </div>
 
       <div class="tidal-vol-container">
         <h2>Lung Capacity</h2>
         <p>A healthy adult male has a tidal volume of around 500, females around 400.</p>
         <tidal-vol-table/>
-        <tidal-vol-graph/>
+        <div class="chart-container">
+          <tidal-vol-graph/>
+        </div>
+      </div>
+
+      <div class="fio2-container">
+        <h2>FiO2 and Oxygen Flow Rate</h2>
+        <p>Amount of oxygen delievered to patient. Room air is 21% O2.</p>
+        <fio-table/>
       </div>
 
       <div class="feed-vol-container">
         <h2>Feeding Volume</h2>
         <p>Tracking of tube feeding administered to patient.</p>
         <feed-vol-table/>
-        <feed-vol-graph/>
+        <div class="chart-container">
+          <feed-vol-graph/>
+        </div>
       </div>
 
       <div class="other-info-container">
@@ -59,11 +68,12 @@
 import store from "@/store/index.js";
 import ChartInfo from "./chartInfo.vue"
 
-import TidalVolTable from "./tables/tidalVolTable.vue"
-import TidalVolGraph from "./graphs/tidalVolGraph.vue"
-
+import FioTable from "./tables/fio2Table.vue"
 import FeedVolTable from "./tables/feedVolTable.vue"
-import FeedVolGraph from "./graphs/feedVolGraph.vue"
+import TidalVolTable from "./tables/tidalVolTable.vue"
+
+import FeedVolGraph from "../charts/feedVolGraph.vue"
+import TidalVolGraph from "../charts/tidalVolGraph.vue"
 
 import MoreInfo from "./moreInfo.vue"
 
@@ -72,6 +82,7 @@ export default {
   components: { ChartInfo,
                 TidalVolGraph,
                 FeedVolGraph,
+                FioTable,
                 TidalVolTable,
                 FeedVolTable,
                 MoreInfo
@@ -104,9 +115,10 @@ export default {
 }
 
 .button-container, .chart-info-container, .referred-container, .bmi-container,
-.tidal-vol-container, .feed-vol-container, .other-info-container, .no-patient-container, footer {
+.tidal-vol-container, .feed-vol-container, .other-info-container, .no-patient-container, 
+.fio2-container, footer {
   flex-direction: row;
-  width: 100vw;
+  width: 80vw;
   margin-left: 1vw;
   margin-right: 1vw;
 }
@@ -117,8 +129,15 @@ export default {
   border-bottom: 2px solid;
 }
 
-.referred-container, .bmi-value {
+.referred-container, .patient-data {
   font-size: 20px;
+}
+
+.chart-container {
+  width: 40vw;
+  height: 30vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 button {

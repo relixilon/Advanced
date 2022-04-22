@@ -56,18 +56,21 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  width: 9vw;
-  height: 100%;
+  width: 100%;
+  height: 10vh;
 }
+
 .fileInput {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 12vw;
 }
+
 .submitFile {
-  height: 50%;
   background-color: lightblue;
+  height: 10vh;
 }
+
 .hide {
   opacity: 0;
   width: 0;

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;
+margin: 40px;
+background-color: #9c9c9c;}
+
+form {border: 6px outset #19aec9;
+      margin: 80px;
+      box-shadow: 7px 7px rgb(83, 83, 83);
+      margin-left:  350px;
+      margin-right: 250px;
+      
+      }
+
+input[type=text], input[type=password] {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 10px 0;
+  margin-left: 180px;
+  margin-right: 250px;
+  display: inline-block;
+  border: 3px solid #19aec9;
+  background-color: #ffffff;
+}
+
+button {
+  background-color: #19aec9;
+  color: black;
+  padding: 10px 14px;
+  margin: 20px 0;
+  margin-left: 230px;
+  margin-right: 250px;
+  cursor: pointer;
+  width: 30%;
+  text-align: center;
+  border: 3px solid #9c9c9c;
+}
+
+button:hover {
+  opacity: 0.6;
+}
+
+.container {
+  padding: 40px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+
+h2{
+color: black;
+padding: 10px;
+text-align: center;
+}
+
+</style>
+</head>
+<body>
+
+<h2> &nbsp; MOSA Login page &nbsp;</h2>
+<img  src="MOSA_Healthcare-logos_white" alt="MOSA_Healthcare-logos_white" width="46" height="34">
+<form action="test" method="post">
+  
+
+  <div class="container">
+    <div class="'msg">{{ msg }}</div>
+    <label for="username"><b>Username :</b></label>
+    <br><br>
+    <input type="text" placeholder="Enter Username" name="username" required>
+    <br><br>
+    <label for="psw"><b>Password :</b></label>
+    <br><br>
+    <input type="password" placeholder="Enter Password" name="password" required>
+        
+    
+  </div>
+
+  <div class="container" style="background-color:whitesmoke">
+    <button type="submit">Login</button>
+    
+  </div>
+</form>
+
+</body>
+</html>
+
+

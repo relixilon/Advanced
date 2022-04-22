@@ -1,24 +1,32 @@
 <template>
-  <div class="header">
-    <div class="joinLogo">
-      <file-submit />
-      <div class="">Logo</div>
+  <div class="home-container">
+    <div class="side-bar-container">
+      <div class="file-submit">
+        <file-submit />
+      </div>
+      <div class="side-search">
+        <side-search />
+      </div>
     </div>
-    <h2 class="name">Name Maybe</h2>
 
-    <div class="user">
-      <button v-if="!user" v-on:click="f">Login</button>
-      <p v-else>{{ user }}</p>
+    <div class="main-container">
+      <div class="header">
+        <div class="logo">
+          <img src="../assets/MOSA_Healthcare-logos_black.png">
+        </div>
+        <div class="title">
+          <h2>MOSA Dashboard</h2>
+        </div>
+      </div>
+
+      <div class="nav-container">
+        <bar v-on:change-comp="switchContent"/>
+      </div>
+
+      <div class="content-container">
+        <component :is="currentContent"></component>
+      </div>
     </div>
-  </div>
-  
-  <div class="nav">
-    <bar v-on:change-comp="switchContent"/>
-  </div>
-
-  <div class="content">
-    <side-search />
-    <component :is="currentContent"></component>
   </div>
 </template>
 
@@ -46,23 +54,79 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@import '../assets/variables.css';
+
+.home-container {
+  display: flex;
+  overflow: hidden;
+  background-color: var(--secondary-color);
+}
+
+.side-bar-container {
+  display: flex;
+  flex-direction: column;
+  width: 12vw;
+  height: 100vh;
+  background-color: var(--primary-color);
+}
+
+.file-submit {
+  height: 10vh;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+img {
+  height: 10vh;
+  width: 20vw;
+}
+
+.side-search {
+  height: 100vh;
+  border-right: 1px solid;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
 .header {
   display: flex;
+  height: 10vh;
   flex-direction: row;
-  width: 100vw;
-  justify-content: space-between;
+  border-bottom: 1px solid; 
+  background-color: var(--primary-color);
+}
+
+h2 {
+  margin-left: 25vw;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.logo {
+  height: 10vh;
+  width: 20vw;
+  border-right: 1px solid;
+}
+
+.title {
+  display: flex;
   align-items: center;
   height: 10vh;
+  width: 100vw;
+  background-color: var(--secondary-color);
 }
-.joinLogo {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  align-items: center;
+
+.nav-container {
+  border-bottom: 1px solid;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: var(--primary-color);
 }
-.content {
-  display: flex;
+
+.content-container {
+  width: 100vw;
+  height: 80vh;
 }
 </style>
