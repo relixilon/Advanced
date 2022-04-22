@@ -38,6 +38,7 @@ export default {
   methods: {
     selectPatient(patient) {
       store.commit("setCurrentPatient", patient);
+      store.dispatch('predict',patient)
     },
   },
 };

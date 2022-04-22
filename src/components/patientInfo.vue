@@ -2,7 +2,10 @@
   <div class="container" v-if="headers.length > 2">
     <card class="card" v-for="header in headers" :key="header">
       <h2>{{ header }}</h2>
-      <p>{{ patientData[header] }}</p>
+      <p v-if="header === 'referral\r'">
+        {{ prediction ? 'Recommended': 'Not Recommended' }}
+        </p>
+      <p v-else>{{ patientData[header] }}</p>
     </card>
   </div>
 </template>
@@ -14,9 +17,14 @@ export default {
   components: {
     card,
   },
+  data: () => ({
+  }),
   computed: {
     patientData() {
       return store.state.currentPatient;
+    },
+    prediction(){
+      return store.state.currentPatientPrediction;
     },
     headers() {
       return Object.getOwnPropertyNames(store.state.currentPatient);
