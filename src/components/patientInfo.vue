@@ -3,7 +3,8 @@
     <card class="card" v-for="header in headers" :key="header">
       <h2>{{ header }}</h2>
       <p v-if="header === 'referral\r'">
-        {{ prediction ? 'Recommended': 'Not Recommended' }}
+        {{ prediction===1 ? 'Recommended': prediction===0 ? 'Not Recommended' : prediction===3 ? 'Not enough data':null}}
+
         </p>
       <p v-else>{{ patientData[header] }}</p>
     </card>

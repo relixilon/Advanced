@@ -14,8 +14,8 @@ Connection.execute(
   password TEXT NOT NULL,
   Clearance_level INTEGER NOT NULL)
   """)
-Connection.execute("""INSERT INTO Users VALUES(1,'nurse','1234',1)""")
-Connection.execute("""INSERT INTO Users VALUES(2,'son','5678',2)""")
+# Connection.execute("""INSERT INTO Users VALUES(1,'nurse','1234',1)""")
+# Connection.execute("""INSERT INTO Users VALUES(2,'son','5678',2)""")
 
 app = Flask(__name__)
 #app.config['PROPAGATE_EXCEPTIONS'] = False
