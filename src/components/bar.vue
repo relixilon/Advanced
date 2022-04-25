@@ -24,6 +24,7 @@
 
 <script>
 import store from "../store/index";
+import router from "../router/index";
 export default {
   name: "bar",
   computed: {
@@ -38,6 +39,7 @@ export default {
     logout() {
       store.commit("setUser", "");
       store.commit("setLoginState", false);
+      router.replace({ path: "/" });
     },
   },
 };

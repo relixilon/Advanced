@@ -4,7 +4,7 @@
       <h2>Current Patient</h2>
       <button v-on:click="changeChart('tidal-vol-graph')">Tidal Volume</button>
       <button v-on:click="changeChart('feed-vol-graph')">Feed Volume</button>
-      <button v-on:click="changeChart('feed-vol-graph')">test</button>
+      <button v-on:click="changeChart('peep-pip-graph')">Peep/Pip</button>
 
     </div>
     <br/>
@@ -21,12 +21,12 @@ export default {
   emits: ["changeChart"], 
   methods: {
     changeChart (chart) {
+      console.log(chart)
       this.$emit("changeChart", chart)
     }
   },
 }
 </script>
-
 <style scoped>
 .nav-container {
   display: flex;

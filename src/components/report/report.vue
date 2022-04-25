@@ -2,7 +2,7 @@
   <div class="report-container">
 
     <div class="button-container">
-      <button><router-link to="/">Home</router-link></button>
+      <button><router-link to="/home">Home</router-link></button>
     </div>
 
     <div class="chart-info-container">
@@ -53,7 +53,12 @@
       </div>
 
       <div class="other-info-container">
-          <h2>Other Information</h2>
+          <h2>Peep/Pip</h2>
+          <p>Positive end-expiratory pressure and peak inspiratory pressure</p>
+          <peep-pip-table/>
+        <div class="chart-container">
+          <peep-pip-graph/>
+        </div>
       </div>
 
       <br/>
@@ -71,9 +76,11 @@ import ChartInfo from "./chartInfo.vue"
 import FioTable from "./tables/fio2Table.vue"
 import FeedVolTable from "./tables/feedVolTable.vue"
 import TidalVolTable from "./tables/tidalVolTable.vue"
+import PeepPipTable from "./tables/peepTable.vue"
 
 import FeedVolGraph from "../charts/feedVolGraph.vue"
 import TidalVolGraph from "../charts/tidalVolGraph.vue"
+import PeepPipGraph from "../charts/peepPipGraph.vue"
 
 import MoreInfo from "./moreInfo.vue"
 
@@ -82,9 +89,11 @@ export default {
   components: { ChartInfo,
                 TidalVolGraph,
                 FeedVolGraph,
+                PeepPipGraph,
                 FioTable,
                 TidalVolTable,
                 FeedVolTable,
+                PeepPipTable,
                 MoreInfo
                 },
   data() {

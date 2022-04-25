@@ -14,12 +14,17 @@ import ChartNav from './chartNav.vue'
 import TidalVolGraph from './tidalVolGraph.vue'
 import FeedVolGraph from './feedVolGraph.vue'
 import ReferralsGraph from './referralsGraph.vue'
+import PeepPipGraph from './peepPipGraph.vue'
 
 import store from '@/store/index.js'
 
 export default {
   name: "Charts",
-  components: { ChartNav, TidalVolGraph, FeedVolGraph, ReferralsGraph },
+  components: { ChartNav, 
+                TidalVolGraph, 
+                FeedVolGraph, 
+                ReferralsGraph,
+                PeepPipGraph },
   computed: {
     patient() {
       return store.state.currentPatient
