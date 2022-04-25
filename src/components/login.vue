@@ -51,7 +51,7 @@ export default {
           if (res) {
             store.commit("setLoginState", true);
             store.commit("setUser", this.username);
-            router.replace({ path: "/" });
+            router.replace({ path: "/home" });
           } else {
             this.msg =
               "Incorrect Username or password. Please try again or contact an administrator";

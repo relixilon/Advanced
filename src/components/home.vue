@@ -38,10 +38,16 @@ import PatientInfo from "./patientInfo.vue";
 import Charts from "./charts/charts.vue";
 import Bar from "./bar.vue";
 import store from "../store/index";
+import router from "../router/index";
+
 export default {
   name: "home",
   components: { FileSubmit, SideSearch, Bar, PatientInfo, Charts },
   data() {
+    if (store.state.loginState == false) {
+      console.log("false")
+      router.replace({ path: "/" });
+    }
     return {
       currentContent: "patient-info",
     };

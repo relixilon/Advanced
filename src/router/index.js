@@ -5,7 +5,7 @@ import login from '../components/login.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: home
   },
@@ -15,7 +15,7 @@ const routes = [
     component: report
   },
   {
-    path: '/login',
+    path: '/',
     name: 'Login',
     component: login
   }
