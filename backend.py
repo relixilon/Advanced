@@ -1,3 +1,4 @@
+from matplotlib.pyplot import connect
 import pandas as pd
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
@@ -14,8 +15,16 @@ Connection.execute(
   password TEXT NOT NULL,
   Clearance_level INTEGER NOT NULL)
   """)
+# db.commit()
 # Connection.execute("""INSERT INTO Users VALUES(1,'nurse','1234',1)""")
+# db.commit()
 # Connection.execute("""INSERT INTO Users VALUES(2,'son','5678',2)""")
+
+db.commit()
+# t=Connection.execute("SELECT * FROM Users")
+# t=Connection.fetchall()
+# print(t)
+Connection.close()
 
 app = Flask(__name__)
 #app.config['PROPAGATE_EXCEPTIONS'] = False
@@ -70,7 +79,7 @@ class Predict(Resource):
                 ]]
             )
         )
-        # print(predict.processsingle(data))
+        print(predict.processsingle(data))
         return predict.processsingle(data)
 
 

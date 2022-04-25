@@ -4,6 +4,8 @@
       <h2>Current Patient</h2>
       <button v-on:click="changeChart('tidal-vol-graph')">Tidal Volume</button>
       <button v-on:click="changeChart('feed-vol-graph')">Feed Volume</button>
+      <button v-on:click="changeChart('feed-vol-graph')">test</button>
+
     </div>
     <br/>
     <div class="average-charts">

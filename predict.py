@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 import joblib
 from cgi import test
 import pandas as pd
@@ -9,17 +10,25 @@ model = joblib.load('model.pkl')
 f=open('FeedingDashboarddata.csv')
 
 def processsingle(array):
+	newdata=[]
 	columns=['encounterId','end_tidal_co2','feed_vol','feed_vol_adm','fio2','fio2_ratio','insp_time','oxygen_flow_rate','peep','pip','resp_rate','sip','tidal_vol','tidal_vol_actual','tidal_vol_kg','tidal_vol_spon','bmi']
 	array=np.array(array)
 	newdata=pd.DataFrame(array,columns=columns)
 	newdata=newdata.drop(['sip','encounterId'],axis=1)
+	print(newdata)
 	newdata=newdata.replace(0,np.NaN)
-	newdata=newdata.dropna(axis=0, thresh=7)
-	if len(newdata)<1:
-		predictions=3
-	else:
-		newdata=newdata.fillna(newdata.mean)
-		predictions=int(model.predict(newdata))
+
+	for i in range(len(newdata.index)):
+		print("Nan: ",newdata.iloc[i].isnull().sum())
+		if newdata.iloc[i].isnull().sum()>=7:
+			print("Kicking")
+			predictions=3
+			return predictions
+	newdata=newdata.replace(np.NaN,0)
+	print("NEW DATA:",newdata)
+	print(type(newdata))
+	predictions=int(model.predict(newdata))
+	print(predictions)
 	return predictions
 
 
