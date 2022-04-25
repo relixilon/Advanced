@@ -14,9 +14,6 @@
         <div class="logo">
           <img src="../assets/MOSA_Healthcare-logos_black.png" />
         </div>
-        <div class="title">
-          <h2>MOSA Dashboard</h2>
-        </div>
         <h2 v-if="user" class="user">User: {{ user }}</h2>
       </div>
 
@@ -93,7 +90,7 @@ export default {
 
 img {
   height: 10vh;
-  width: 20vw;
+  width: fit-content;
 }
 
 .side-search {
@@ -113,7 +110,7 @@ img {
 
 .logo {
   height: 10vh;
-  width: 20vw;
+  width: fit-content;
   border-right: 1px solid;
 }
 
