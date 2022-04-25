@@ -7,7 +7,8 @@ import warnings
 import numpy as np
 warnings.filterwarnings('ignore')
 model = joblib.load('model.pkl')
-f=open('FeedingDashboarddata.csv')
+f = open('FeedingDashboarddata.csv')
+
 
 def processsingle(array):
 	newdata=[]
@@ -33,26 +34,26 @@ def processsingle(array):
 
 
 def processfile(CSV):
-	CSV = pd.read_csv(CSV)
-	topredict = CSV
-	print("RECIEVED FILE:\n ", CSV)
-	sip = topredict['sip']
-	topredict = topredict.dropna(axis=0, thresh=7)
-	topredict = topredict.drop(['sip', 'referral'], axis=1)
-	id = topredict['encounterId']
-	topredict = topredict.drop(['encounterId'], axis=1)
-	test = topredict
-	print("TEST:\n", test)
-	for feature in test.columns[test.isnull().any(axis=0)]:
-		test[feature].fillna(test[feature].mean(), inplace=True)
-	predictions = model.predict(test)
-	topredict['referral'] = predictions
-	topredict.insert(10, 'sip', sip)
-	topredict.insert(0, 'encounterId', id)
-	CSV['referral'] = "Insufficient Data"
-	new = pd.concat([topredict, CSV])
-	new = new.drop_duplicates(subset='encounterId', keep='first')
-	new = new.sort_values('encounterId')
-	print("RETURNED FILE:\n ", new)
-	new = new.to_csv('referraldata.csv', index=False)
-	return new
+    CSV = pd.read_csv(CSV)
+    topredict = CSV
+    print("RECIEVED FILE:\n ", CSV)
+    sip = topredict['sip']
+    topredict = topredict.dropna(axis=0, thresh=7)
+    topredict = topredict.drop(['sip', 'referral'], axis=1)
+    id = topredict['encounterId']
+    topredict = topredict.drop(['encounterId'], axis=1)
+    test = topredict
+    print("TEST:\n", test)
+    for feature in test.columns[test.isnull().any(axis=0)]:
+        test[feature].fillna(test[feature].mean(), inplace=True)
+    predictions = model.predict(test)
+    topredict['referral'] = predictions
+    topredict.insert(10, 'sip', sip)
+    topredict.insert(0, 'encounterId', id)
+    CSV['referral'] = "Insufficient Data"
+    new = pd.concat([topredict, CSV])
+    new = new.drop_duplicates(subset='encounterId', keep='first')
+    new = new.sort_values('encounterId')
+    print("RETURNED FILE:\n ", new)
+    new = new.to_csv('referraldata.csv', index=False)
+    return new
