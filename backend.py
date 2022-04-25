@@ -1,4 +1,3 @@
-from matplotlib.pyplot import connect
 import pandas as pd
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
