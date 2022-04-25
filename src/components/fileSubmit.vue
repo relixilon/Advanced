@@ -49,6 +49,9 @@ export default {
     submitFile() {
       this.filecontent = JSON.parse(csvJSON(this.content));
       store.commit("setPatients", this.filecontent);
+      this.filecontent.slice(0, -1).map((patient) => {
+        store.dispatch("predictFile", patient);
+      });
     },
   },
 };

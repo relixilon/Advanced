@@ -3,9 +3,16 @@
     <card class="card" v-for="header in headers" :key="header">
       <h2>{{ header }}</h2>
       <p v-if="header === 'referral\r'">
-        {{ prediction===1 ? 'Recommended': prediction===0 ? 'Not Recommended' : prediction===3 ? 'Not enough data':null}}
-
-        </p>
+        {{
+          prediction === 1
+            ? "Recommended"
+            : prediction === 0
+            ? "Not Recommended"
+            : prediction === 3
+            ? "Not enough data"
+            : null
+        }}
+      </p>
       <p v-else>{{ patientData[header] }}</p>
     </card>
   </div>
@@ -18,14 +25,13 @@ export default {
   components: {
     card,
   },
-  data: () => ({
-  }),
+  data: () => ({}),
   computed: {
     patientData() {
       return store.state.currentPatient;
     },
-    prediction(){
-      return store.state.currentPatientPrediction;
+    prediction() {
+      return this.patientData["referral\r"];
     },
     headers() {
       return Object.getOwnPropertyNames(store.state.currentPatient);
@@ -34,14 +40,14 @@ export default {
 };
 </script>
 <style scoped>
-@import '../assets/variables.css';
+@import "../assets/variables.css";
 
 p {
-  margin :0;
+  margin: 0;
   padding-top: 3vh;
 }
 
-h2 { 
+h2 {
   margin: 0;
   padding: 0;
 }

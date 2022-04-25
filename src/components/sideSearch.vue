@@ -1,6 +1,10 @@
 <template>
   <div class="searchContainer">
-    <input type="text" placeholder="Search" v-model="search" />
+    <input class="search" type="text" placeholder="Search" v-model="search" />
+    <div class="filter">
+      Recommended
+      <input type="checkbox" v-model="flagged" />
+    </div>
     <ul>
       <li v-for="patient in patients" :key="patient.encounterId">
         <button
@@ -23,13 +27,20 @@ export default {
   data() {
     return {
       search: "",
+      flagged: false,
     };
   },
   computed: {
     patients() {
-      return store.state.patients.filter(
-        (patient) => patient.encounterId.indexOf(this.search) !== -1
-      );
+      return this.flagged
+        ? store.state.patients
+            .filter(
+              (patient) => patient.encounterId.indexOf(this.search) !== -1
+            )
+            .filter((patient) => patient["referral\r"] === 1)
+        : store.state.patients.filter(
+            (patient) => patient.encounterId.indexOf(this.search) !== -1
+          );
     },
     currentPatient() {
       return store.state.currentPatient;
@@ -38,13 +49,12 @@ export default {
   methods: {
     selectPatient(patient) {
       store.commit("setCurrentPatient", patient);
-      store.dispatch('predict',patient)
     },
   },
 };
 </script>
 <style scoped>
-@import '../assets/variables.css';
+@import "../assets/variables.css";
 
 .searchContainer {
   margin: 0 1vw 0 1vw;
@@ -69,7 +79,7 @@ ul::-webkit-scrollbar {
   display: none;
 }
 
-input {
+.search {
   width: 9vw;
   font-size: 20px;
   margin: 3vh 0 0 0;
@@ -98,5 +108,13 @@ button {
 
 .active {
   background-color: var(--secondary-color);
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  height: 4;
+  align-items: center;
 }
 </style>

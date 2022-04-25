@@ -16,7 +16,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    predict({ commit }, patient) {
+    predictFile({ commit }, patient) {
       axios
         .post("http://127.0.0.1:5000/predict", {
           encounterId: patient.encounterId,
@@ -40,7 +40,7 @@ export default new Vuex.Store({
         .then((response) => {
           //console.log(response);
           let prediction = response.data;
-          commit('setPatientReferral', prediction)
+          commit('setPatientReferral', { prediction: prediction, id: patient.encounterId })
         });
     },
     login({ commit }, credentials) {
@@ -67,8 +67,12 @@ export default new Vuex.Store({
     setCurrentPatient(state, data) {
       state.currentPatient = data
     },
-    setPatientReferral(state, referral) {
-      state.currentPatientPrediction = referral
+    setPatientReferral(state, data) {
+      state.patients.map((patient) => {
+        if (patient.encounterId === data.id) {
+          patient['referral\r'] = data.prediction
+        }
+      })
     },
     setUser(state, username) {
       state.user = username

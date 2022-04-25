@@ -78,7 +78,7 @@ class Predict(Resource):
                 ]]
             )
         )
-        print(predict.processsingle(data))
+        # print(predict.processsingle(data))
         return predict.processsingle(data)
 
 
@@ -97,7 +97,7 @@ class Login(Resource):
         Connection.execute(
             'SELECT * FROM Users WHERE username = ? and password= ?', (username, password, ))
         account = Connection.fetchone()
-        print(account)
+        # print(account)
         if account:
             return True
         else:
