@@ -94,8 +94,6 @@ class Login(Resource):
         password = args['password']
         db = sqlite3.connect("SD.db")
         Connection = db.cursor()
-        Connection.execute("""INSERT INTO Users VALUES(1,'nurse','1234',1)""")
-        Connection.execute("""INSERT INTO Users VALUES(2,'son','5678',2)""")
         Connection.execute(
             'SELECT * FROM Users WHERE username = ? and password= ?', (username, password, ))
         account = Connection.fetchone()
