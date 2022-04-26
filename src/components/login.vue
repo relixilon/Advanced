@@ -20,6 +20,7 @@
         <input type="password" placeholder="Enter password" v-model="password" />
         <br><br>
         <button type="button" v-on:click="submit()">Login</button>
+        <br><br>
       <span class="message">{{ msg }}</span>
       </div>
     </form>
@@ -133,10 +134,11 @@ button {
 
 button:hover {
   opacity: 0.6;
+  
 }
 body{
   background-color: rgb(201, 199, 199);
   height: 752px;
-  
+  overflow: 0;
 }
 </style>
