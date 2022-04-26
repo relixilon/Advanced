@@ -11,16 +11,24 @@ export default {
   data() {
     let totalPatients = store.state.patients.length;
     let totalReferred = 0;
+    let totalNotReferred = 0;
+    let totalNotEnoughData = 0;
     const data = JSON.parse(JSON.stringify(store.state.patients)); 
     for (let i=0; i<totalPatients-1; i++) {
       if (Object.values(data[i])[17] == 1) {
         totalReferred += 1;
       }
+      if (Object.values(data[i])[17] == 3) {
+        totalNotEnoughData += 1;
+      }
+      if (Object.values(data[i])[17] == 0) {
+        totalNotReferred += 1; 
+      }
     }
-    let notReferred = totalPatients - totalReferred
     return {
-      notReferred: notReferred,
-      totalReferred: totalReferred
+      totalNotReferred: totalNotReferred,
+      totalReferred: totalReferred,
+      totalNotEnoughData: totalNotEnoughData,
     }
   },
   methods: {
@@ -29,11 +37,11 @@ export default {
       this.referralGraph = new Chart(ctx, {
         type: 'pie',
         data: {
-          labels: ["Not Referred", "Referred"],
+          labels: ["Not Referred", "Referred", "Insufficient Data"],
           datasets: [
             {
-              data: [this.notReferred, this.totalReferred],
-              backgroundColor: ["rgba(21, 100, 255, 0.5)", "rgba(255, 100, 21, 0.5)"],
+              data: [this.totalNotReferred, this.totalReferred, this.totalNotEnoughData],
+              backgroundColor: ["rgba(21, 100, 255, 0.5)", "rgba(255, 100, 21, 0.5)", "rgba(147, 250, 165, 0.5)"],
               borderColor: "#333333",
               borderWidth: 3
             }
