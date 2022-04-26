@@ -146,7 +146,7 @@ button {
   display: flex;
   flex-direction: column;
   text-align: center;
-  height: 4;
+  height: 7;
   align-items: center;
 }
 
