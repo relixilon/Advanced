@@ -42,7 +42,7 @@ export default {
   components: { FileSubmit, SideSearch, Bar, PatientInfo, Charts },
   data() {
     if (store.state.loginState == false) {
-      console.log("false")
+      console.log("false");
       router.replace({ path: "/" });
     }
     return {
@@ -105,23 +105,15 @@ img {
   height: 10vh;
   flex-direction: row;
   border-bottom: 1px solid;
+  justify-content: space-between;
+  max-width: 87vw;
   background-color: var(--secondary-color);
 }
 
 .logo {
   height: 10vh;
-  width: fit-content;
-  border-right: 1px solid;
 }
 
-.title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60vw;
-  height: 10vh;
-  background-color: var(--secondary-color);
-}
 .nav-container {
   border-bottom: 1px solid;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,

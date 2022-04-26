@@ -54,7 +54,8 @@ h2 {
 
 .container {
   display: flex;
-  height: 85vh;
+  height: 84vh;
+  overflow-y: scroll;
   flex-wrap: wrap;
 }
 

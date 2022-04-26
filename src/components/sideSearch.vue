@@ -2,9 +2,21 @@
   <div class="searchContainer">
     <input class="search" type="text" placeholder="Search" v-model="search" />
     <div class="filter">
-      Recommended
-      <input type="checkbox" v-model="flagged" />
+      <div>
+        Recommended
+        <input type="radio" name="filter" value="1" v-model="filter" />
+      </div>
+      <div>
+        Not Recommended
+        <input type="radio" name="filter" value="2" v-model="filter" />
+      </div>
+      <div>
+        No data
+        <input type="radio" name="filter" value="3" v-model="filter" />
+      </div>
+      <button v-on:click="resetFilters()" class="reset">reset filters</button>
     </div>
+
     <ul>
       <li v-for="patient in patients" :key="patient.encounterId">
         <button
@@ -27,20 +39,36 @@ export default {
   data() {
     return {
       search: "",
-      flagged: false,
+      filter: false,
     };
   },
   computed: {
     patients() {
-      return this.flagged
-        ? store.state.patients
+      switch (this.filter) {
+        case "1":
+          return store.state.patients
             .filter(
               (patient) => patient.encounterId.indexOf(this.search) !== -1
             )
-            .filter((patient) => patient["referral\r"] === 1)
-        : store.state.patients.filter(
+            .filter((patient) => patient["referral\r"] === 1);
+        case "2":
+          return store.state.patients
+            .filter(
+              (patient) => patient.encounterId.indexOf(this.search) !== -1
+            )
+            .filter((patient) => patient["referral\r"] === 0);
+        case "3":
+          return store.state.patients
+            .filter(
+              (patient) => patient.encounterId.indexOf(this.search) !== -1
+            )
+            .filter((patient) => patient["referral\r"] === 3);
+
+        default:
+          return store.state.patients.filter(
             (patient) => patient.encounterId.indexOf(this.search) !== -1
           );
+      }
     },
     currentPatient() {
       return store.state.currentPatient;
@@ -49,6 +77,10 @@ export default {
   methods: {
     selectPatient(patient) {
       store.commit("setCurrentPatient", patient);
+    },
+    resetFilters() {
+      this.search = "";
+      this.filter = false;
     },
   },
 };
@@ -112,9 +144,15 @@ button {
 
 .filter {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   text-align: center;
   height: 4;
   align-items: center;
+}
+
+.reset {
+  font-size: 15px;
+  background-color: var(--secondary-color);
+  width: 60%;
 }
 </style>
