@@ -2,9 +2,19 @@
   <div class="searchContainer">
     <input class="search" type="text" placeholder="Search" v-model="search" />
     <div class="filter">
-      Recommended
-      <input type="checkbox" v-model="flagged" />
-    </div>
+      <form>
+        <label for="flagged">
+          <input type="checkbox" v-model="flagged" id="flagged" />
+        Flagged
+        </label><br>
+        <label for="Not flagged">
+          <input type="checkbox" v-model="flagged" id="Not flagged" />
+        Not flagged</label><br>
+        <label for="Manual Review">
+          <input type="checkbox" v-model="flagged" id="Manual Review" />
+        Manual Review</label><br>   
+      </form> 
+      </div>
     <ul>
       <li v-for="patient in patients" :key="patient.encounterId">
         <button
@@ -114,7 +124,7 @@ button {
   display: flex;
   flex-direction: row;
   text-align: center;
-  height: 4;
+  height: 7;
   align-items: center;
 }
 </style>
