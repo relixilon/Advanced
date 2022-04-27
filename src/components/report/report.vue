@@ -147,6 +147,11 @@ export default {
 </script>
 
 <style scoped>
+@import "../../assets/variables.css";
+html {
+  overflow: show;
+}
+
 .report-container {
   display: flex;
   flex-wrap: wrap;
@@ -154,7 +159,7 @@ export default {
   margin-right: 10vw;
   border-left: 2px solid;
   border-right: 2px solid;
-  background-color: #d0d0d0;
+  background-color: whitesmoke;
 }
 
 .button-container, .chart-info-container, .referred-container, .bmi-container,
@@ -189,7 +194,7 @@ button {
   font-size: 15px;
   text-align: center;
   padding: 5px;
-  background-color: lightblue;
+  background-color: var(--secondary-color);
   border-color: black;
 }
 

@@ -72,6 +72,7 @@ export default {
   display: flex;
   width: 100vw;
   background-color: var(--secondary-color);
+  overflow-y: hidden;
 }
 
 .side-bar-container {

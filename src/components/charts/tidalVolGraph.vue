@@ -61,7 +61,6 @@ export default {
                 padding: 25,
                 color: "black"
                   },
-                max: 500,
               },
             xAxes: {
               ticks: {
