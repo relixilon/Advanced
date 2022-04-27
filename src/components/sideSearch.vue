@@ -3,15 +3,15 @@
     <input class="search" type="text" placeholder="Search" v-model="search" />
     <div class="filter">
       <div>
-        Recommended
+        Flagged
         <input type="radio" name="filter" value="1" v-model="filter" />
       </div>
       <div>
-        Not Recommended
+        Not Flagged
         <input type="radio" name="filter" value="2" v-model="filter" />
       </div>
       <div>
-        No data
+        Need review
         <input type="radio" name="filter" value="3" v-model="filter" />
       </div>
       <button v-on:click="resetFilters()" class="reset">reset filters</button>
