@@ -90,7 +90,7 @@ export default {
 
 img {
   height: 10vh;
-  width: fit-content;
+  width: 70vw;
 }
 
 .side-search {
@@ -106,7 +106,7 @@ img {
   flex-direction: row;
   border-bottom: 1px solid;
   justify-content: space-between;
-  max-width: 87vw;
+  max-width: 90vw;
   background-color: var(--secondary-color);
 }
 

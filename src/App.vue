@@ -6,6 +6,7 @@
 @import "./assets/variables.css";
 
 html {
+  overflow-y: hidden;
   overflow-x: hidden;
 }
 body {

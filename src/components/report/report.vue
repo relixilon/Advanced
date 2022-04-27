@@ -104,7 +104,7 @@ export default {
     const data = JSON.parse(JSON.stringify(store.state.currentPatient));
     let encounterId = data.encounterId
     // Get referral (1=referred, 0=no referral)
-    let referral = Object.values(data)[17]
+    let referral = store.state.currentPatientPrediction;
     // Get bmi and generate only first 2 decimals
     let bmi = Math.round(data.bmi*100)/100;
     return {

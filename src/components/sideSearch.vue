@@ -96,7 +96,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70vh;
+  height: 60vh;
   overflow: scroll;
   list-style: none;
   border: 1px solid;
